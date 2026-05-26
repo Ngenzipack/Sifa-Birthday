@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Sifa</title>
+  <meta name="description" content="A birthday message for Sifa with music and a romantic celebration design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <span class="petal p1"></span>
+    <span class="petal p2"></span>
+    <span class="petal p3"></span>
+    <span class="petal p4"></span>
+    <span class="petal p5"></span>
+    <span class="petal p6"></span>
+  </div>
+
+  <main class="card" role="main">
+    <p class="eyebrow">A Day Just For You</p>
+    <h1>Happy Birthday, Sifa</h1>
+    <p class="message" id="birthday-message">
+      May this new year of your life be full of calm mornings, loud laughter,
+      and beautiful surprises. You deserve to be celebrated today and always.
+      Happy birthday to someone truly special.
+    </p>
+
+    <div class="controls">
+      <button id="music-toggle" type="button" aria-describedby="audio-status">Play Song</button>
+      <p id="audio-status" class="status" aria-live="polite">Tap once to start your birthday song.</p>
+    </div>
+
+    <p class="signature">With love, always.</p>
+  </main>
+
+  <audio id="birthday-song" preload="auto" loop>
+    <source src="assets/happy-birthday.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <footer class="credit">
+    Song: Provided by the sender for this private birthday message.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

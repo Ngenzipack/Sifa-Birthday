@@ -1,0 +1,183 @@
+:root {
+  --bg-top: #fff7ef;
+  --bg-bottom: #f9e7df;
+  --card: rgba(255, 255, 255, 0.78);
+  --ink: #3a2130;
+  --accent: #c75473;
+  --accent-strong: #a52f53;
+  --soft: #7f5d6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Nunito Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 194, 209, 0.36), transparent 38%),
+    radial-gradient(circle at 85% 12%, rgba(255, 232, 184, 0.48), transparent 40%),
+    radial-gradient(circle at 40% 85%, rgba(240, 200, 222, 0.4), transparent 45%),
+    linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  width: 18px;
+  height: 12px;
+  border-radius: 60% 40% 55% 45%;
+  background: linear-gradient(120deg, #f4a4bc, #f07f9f);
+  opacity: 0.55;
+  animation: drift 11s linear infinite;
+  filter: drop-shadow(0 3px 4px rgba(168, 70, 98, 0.35));
+}
+
+.p1 { left: 10%; top: -12%; animation-delay: 0s; }
+.p2 { left: 30%; top: -8%; animation-delay: 1.6s; }
+.p3 { left: 52%; top: -15%; animation-delay: 3.1s; }
+.p4 { left: 67%; top: -10%; animation-delay: 4.5s; }
+.p5 { left: 79%; top: -14%; animation-delay: 5.8s; }
+.p6 { left: 92%; top: -9%; animation-delay: 7.2s; }
+
+@keyframes drift {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.52;
+  }
+  100% {
+    transform: translateY(118vh) translateX(-14px) rotate(300deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.card {
+  width: min(760px, 90vw);
+  background: var(--card);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 4vw, 2.7rem);
+  text-align: center;
+  box-shadow:
+    0 24px 50px rgba(98, 53, 65, 0.18),
+    0 3px 12px rgba(165, 85, 111, 0.14);
+  animation: rise 700ms ease-out;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  color: var(--soft);
+}
+
+h1 {
+  margin: 0.45rem 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  line-height: 1;
+  color: var(--accent-strong);
+}
+
+.message {
+  margin: 0 auto;
+  max-width: 56ch;
+  font-size: clamp(1rem, 2.6vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.controls {
+  margin-top: 1.7rem;
+  display: grid;
+  place-items: center;
+  gap: 0.7rem;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.78rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(145deg, #ce5a7b, #b63f67);
+  box-shadow: 0 10px 18px rgba(182, 63, 103, 0.28);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover,
+button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 22px rgba(182, 63, 103, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.status {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.95rem;
+}
+
+.signature {
+  margin: 1.7rem 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--accent-strong);
+}
+
+.credit {
+  position: fixed;
+  bottom: 0.45rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(58, 33, 48, 0.65);
+}
+
+@media (max-width: 640px) {
+  .card {
+    width: min(92vw, 720px);
+    border-radius: 20px;
+    padding: 1.35rem 1.1rem 1.7rem;
+  }
+
+  .credit {
+    position: static;
+    margin: 0.75rem 0 1rem;
+  }
+}

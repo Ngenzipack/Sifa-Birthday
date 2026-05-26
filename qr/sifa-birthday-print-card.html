@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sifa Birthday QR Print Card</title>
+  <style>
+    body {
+      font-family: "Nunito Sans", Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #fffaf7;
+      color: #2f1e28;
+    }
+    .card {
+      max-width: 740px;
+      margin: 0 auto;
+      border: 2px solid #e9cfd9;
+      border-radius: 16px;
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      color: #9f2f58;
+    }
+    p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+    img {
+      width: min(420px, 92vw);
+      height: auto;
+      margin: 16px auto;
+      display: block;
+    }
+    .url {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      word-break: break-word;
+      margin-top: 10px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .card { border: none; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <section class="card">
+    <h1>Birthday Surprise for Sifa</h1>
+    <p>Scan this code with your phone camera.</p>
+    <img src="./sifa-birthday-qr.png" alt="QR code to Sifa birthday message" />
+    <p>If scanning fails, open this link:</p>
+    <p class="url">ngenzipack.github.io/Sifa-Birthday</p>
+  </section>
+</body>
+</html>
