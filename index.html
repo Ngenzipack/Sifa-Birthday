@@ -4,37 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday, Sifa</title>
-  <meta name="description" content="A birthday message for Sifa with music and a romantic celebration design." />
+  <meta name="description" content="An animated birthday story for Sifa with engaging scroll effects and music." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/heart-favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="scene" aria-hidden="true">
-    <span class="petal p1"></span>
-    <span class="petal p2"></span>
-    <span class="petal p3"></span>
-    <span class="petal p4"></span>
-    <span class="petal p5"></span>
-    <span class="petal p6"></span>
-  </div>
+  <div class="scroll-meter" aria-hidden="true"><span id="scroll-progress"></span></div>
 
-  <main class="card" role="main">
-    <p class="eyebrow">A Day Just For You</p>
-    <h1>Happy Birthday, Sifa</h1>
-    <p class="message" id="birthday-message">
-      May this new year of your life be full of calm mornings, loud laughter,
-      and beautiful surprises. You deserve to be celebrated today and always.
-      Happy birthday to someone truly special.
-    </p>
-
-    <div class="controls">
+  <header class="audio-dock" role="banner">
+    <div class="audio-dock-shell">
+      <p class="dock-label">Sifa Birthday Experience</p>
       <button id="music-toggle" type="button" aria-describedby="audio-status">Play Song</button>
-      <p id="audio-status" class="status" aria-live="polite">Tap once to start your birthday song.</p>
+      <p id="audio-status" class="status" aria-live="polite">Tap once and keep scrolling. The song keeps playing.</p>
     </div>
+  </header>
 
-    <p class="signature">With love, always.</p>
+  <main>
+    <section class="panel hero" aria-label="Hero">
+      <div class="layer hero-gradient" data-parallax data-speed="0.12"></div>
+      <div class="layer hero-orb hero-orb-a" data-parallax data-speed="0.28"></div>
+      <div class="layer hero-orb hero-orb-b" data-parallax data-speed="0.2"></div>
+      <div class="layer hero-ribbon" data-parallax data-speed="0.16"></div>
+
+      <div class="hero-content reveal">
+        <p class="kicker">A Day Made To Celebrate You</p>
+        <h1>Happy Birthday, Sifa.</h1>
+        <p class="lede">
+          This page was made like a little cinematic story just for you.
+          Keep scrolling and let every section unfold with the music.
+        </p>
+        <p class="scroll-cue">Scroll to reveal your birthday letter</p>
+      </div>
+    </section>
+
+    <section class="panel chapter chapter-one" aria-label="Birthday letter">
+      <div class="chapter-frame">
+        <article class="chapter-text reveal">
+          <p class="chapter-id">Chapter 1</p>
+          <h2>Every year, you become even more unforgettable.</h2>
+          <p>
+            May this new chapter bring you peaceful mornings, brave dreams,
+            and moments that feel exactly like sunshine after rain.
+          </p>
+        </article>
+
+        <div class="chapter-stack">
+          <article class="glass-card reveal">
+            <h3>Wish One</h3>
+            <p>May your laughter always come easy and your heart always feel safe.</p>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Wish Two</h3>
+            <p>May the people around you keep reminding you how loved you are.</p>
+          </article>
+          <article class="glass-card reveal">
+            <h3>Wish Three</h3>
+            <p>May you keep choosing joy, and may joy keep choosing you back.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel moments" aria-label="Moments">
+      <div class="moments-intro reveal">
+        <p class="chapter-id">Chapter 2</p>
+        <h2>A scroll full of good things for your year ahead.</h2>
+      </div>
+
+      <div class="moments-grid">
+        <article class="moment reveal">
+          <p class="moment-title">Brighter Days</p>
+          <p>The kind that start softly and end with a grateful smile.</p>
+        </article>
+        <article class="moment reveal">
+          <p class="moment-title">Big Wins</p>
+          <p>Progress you can feel, and success that feels truly yours.</p>
+        </article>
+        <article class="moment reveal">
+          <p class="moment-title">Gentle Peace</p>
+          <p>Calm in your mind, confidence in your voice, and warmth in your home.</p>
+        </article>
+        <article class="moment reveal">
+          <p class="moment-title">New Memories</p>
+          <p>Days you will look back on and call beautiful.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel finale" aria-label="Final message">
+      <div class="layer finale-glow" data-parallax data-speed="0.22"></div>
+      <div class="finale-card reveal">
+        <p class="chapter-id">Final Chapter</p>
+        <h2>Your birthday is not just one moment. It is a whole feeling.</h2>
+        <p>
+          Keep this song. Keep this page. Keep this reminder:
+          you are deeply appreciated, today and always.
+        </p>
+        <p class="signature">With love, always.</p>
+      </div>
+    </section>
   </main>
 
   <audio id="birthday-song" preload="auto" loop>
@@ -42,9 +113,7 @@
     Your browser does not support the audio element.
   </audio>
 
-  <footer class="credit">
-    Song: Provided by the sender for this private birthday message.
-  </footer>
+  <footer class="credit">Song: Provided by the sender for this private birthday message.</footer>
 
   <script src="script.js"></script>
 </body>
