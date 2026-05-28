@@ -11,6 +11,19 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 audio.volume = 0.42;
 let resumeAfterPrint = false;
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+function resetToTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+}
+
+// Force the experience to always start from the top after refresh/open.
+resetToTop();
+window.addEventListener("load", resetToTop);
+window.addEventListener("pageshow", resetToTop);
+
 if (!status.textContent.trim()) {
   status.textContent = "Tap Play, then scroll.";
 }
