@@ -1,5 +1,6 @@
 const audio = document.getElementById("birthday-song");
 const button = document.getElementById("music-toggle");
+const pdfButton = document.getElementById("pdf-download");
 const status = document.getElementById("audio-status");
 const progress = document.getElementById("scroll-progress");
 const parallaxLayers = Array.from(document.querySelectorAll("[data-parallax]"));
@@ -8,6 +9,11 @@ const revealElements = Array.from(document.querySelectorAll(".reveal"));
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 audio.volume = 0.42;
+let resumeAfterPrint = false;
+
+if (!status.textContent.trim()) {
+  status.textContent = "Tap Play, then scroll.";
+}
 
 function setPlayingState(isPlaying) {
   button.textContent = isPlaying ? "Pause Song" : "Play Song";
@@ -34,6 +40,32 @@ button.addEventListener("click", async () => {
 
 audio.addEventListener("error", () => {
   status.textContent = "Birthday song is unavailable. Please reload the page.";
+});
+
+if (pdfButton) {
+  pdfButton.addEventListener("click", () => {
+    resumeAfterPrint = !audio.paused;
+    status.textContent = "Opening PDF options...";
+    window.print();
+  });
+}
+
+window.addEventListener("afterprint", async () => {
+  if (resumeAfterPrint && audio.paused) {
+    try {
+      await audio.play();
+      setPlayingState(true);
+      resumeAfterPrint = false;
+      return;
+    } catch (err) {
+      console.error("Unable to resume audio after print:", err);
+    }
+  }
+
+  status.textContent = audio.paused
+    ? "PDF step done. Tap Play and keep scrolling."
+    : "Song is playing. Keep scrolling through your birthday story.";
+  resumeAfterPrint = false;
 });
 
 if (!reducedMotion) {

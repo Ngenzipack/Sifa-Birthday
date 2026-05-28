@@ -72,6 +72,12 @@ body {
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
 }
 
+.dock-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .dock-label {
   margin: 0;
   font-size: 0.84rem;
@@ -86,6 +92,13 @@ body {
   margin: 0;
   font-size: 0.86rem;
   color: #50576c;
+}
+
+.pdf-hint {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.74rem;
+  color: #697189;
 }
 
 button {
@@ -111,6 +124,20 @@ button:active {
   transform: translateY(0);
 }
 
+.pdf-btn {
+  padding: 0.5rem 0.88rem;
+  font-size: 0.8rem;
+  color: #394057;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(57, 64, 87, 0.14);
+  box-shadow: 0 8px 16px rgba(25, 36, 67, 0.12);
+}
+
+.pdf-btn:hover,
+.pdf-btn:focus-visible {
+  box-shadow: 0 10px 20px rgba(25, 36, 67, 0.16);
+}
+
 main {
   padding-top: 5.8rem;
 }
@@ -126,6 +153,82 @@ main {
   display: grid;
   place-items: center;
   isolation: isolate;
+}
+
+.balloon-launch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -26vh;
+  width: clamp(30px, 4.4vw, 52px);
+  aspect-ratio: 0.84;
+  border-radius: 55% 55% 50% 50%;
+  opacity: 0;
+  transform: translateY(0) scale(0.95);
+  animation: balloon-rise 9.6s ease-out 1 forwards;
+  box-shadow: inset -8px -18px 22px rgba(0, 0, 0, 0.08);
+}
+
+.balloon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -16px;
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(117, 126, 154, 0.5), rgba(117, 126, 154, 0.1));
+}
+
+.bal-1 {
+  left: 7%;
+  animation-delay: 0.3s;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.84), rgba(254, 102, 157, 0.95));
+}
+
+.bal-2 {
+  left: 21%;
+  width: clamp(26px, 4vw, 46px);
+  animation-delay: 0.9s;
+  animation-duration: 8.7s;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.8), rgba(124, 183, 255, 0.9));
+}
+
+.bal-3 {
+  left: 78%;
+  animation-delay: 1.3s;
+  animation-duration: 9.4s;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.82), rgba(255, 145, 95, 0.9));
+}
+
+.bal-4 {
+  left: 90%;
+  width: clamp(24px, 3.8vw, 44px);
+  animation-delay: 1.9s;
+  animation-duration: 8.9s;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.8), rgba(196, 126, 255, 0.9));
+}
+
+@keyframes balloon-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.95);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.56;
+  }
+  78% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(24px) scale(1.04);
+    opacity: 0;
+  }
 }
 
 .layer {
@@ -180,6 +283,7 @@ main {
 
 .hero-content {
   position: relative;
+  z-index: 1;
   max-width: 760px;
   text-align: center;
   padding: clamp(1.8rem, 4vw, 2.8rem);
@@ -427,6 +531,12 @@ h1 {
     gap: 0.5rem;
   }
 
+  .dock-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
   button {
     width: 100%;
   }
@@ -440,8 +550,44 @@ h1 {
   }
 }
 
+@media print {
+  body {
+    background: #fff;
+    color: #121826;
+  }
+
+  .scroll-meter,
+  .audio-dock,
+  .credit,
+  .balloon-launch,
+  .layer {
+    display: none !important;
+  }
+
+  main {
+    padding-top: 0;
+  }
+
+  .panel {
+    min-height: auto;
+    padding: 1cm 0.7cm 0.35cm;
+    page-break-inside: avoid;
+  }
+
+  .chapter-frame {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .layer,
+  .balloon,
   .reveal,
   button,
   #scroll-progress {
