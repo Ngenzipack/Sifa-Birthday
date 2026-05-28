@@ -17,12 +17,8 @@
   <header class="audio-dock" role="banner">
     <div class="audio-dock-shell">
       <p class="dock-label">Happy Birthday, Sifa</p>
-      <div class="dock-actions">
-        <button id="music-toggle" type="button" aria-describedby="audio-status">Play</button>
-        <button id="pdf-download" class="pdf-btn" type="button">Keep PDF</button>
-      </div>
+      <button id="music-toggle" type="button" aria-describedby="audio-status">Play</button>
       <p id="audio-status" class="status" aria-live="polite">Tap Play, then scroll.</p>
-      <p class="pdf-hint">Use Keep PDF to save this message on your phone.</p>
     </div>
   </header>
 
@@ -100,6 +96,9 @@
   </audio>
 
   <footer class="credit">Ngenzi</footer>
+  <button id="pdf-download" class="pdf-fab" type="button" aria-label="Download as PDF" title="Keep PDF">
+    <span aria-hidden="true">⤓</span>
+  </button>
 
   <script src="script.js"></script>
 </body>
